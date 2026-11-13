@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b1020" />
+  <title>Windows 11 — Рабочий стол</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="desktop" id="desktop" aria-label="Рабочий стол Windows">
+    <div class="wallpaper-glow"></div>
+    <div class="desktop-icons" id="desktopIcons">
+      <button class="desktop-icon" data-app="pc"><span class="desk-emoji pc-icon"><svg viewBox="0 0 48 48"><rect x="5" y="7" width="38" height="27" rx="3" fill="#c7e8ff"/><rect x="8" y="10" width="32" height="21" rx="1" fill="#1688d4"/><path d="M19 35h10l2 5H17z" fill="#dbe9f2"/><rect x="14" y="40" width="20" height="2" rx="1" fill="#dbe9f2"/></svg></span><span>Этот компьютер</span></button>
+      <button class="desktop-icon" data-app="browser"><span class="desk-emoji edge-icon"><svg viewBox="0 0 48 48"><defs><linearGradient id="edge" x1="8" y1="5" x2="40" y2="43"><stop stop-color="#27d7c4"/><stop offset=".5" stop-color="#0784dc"/><stop offset="1" stop-color="#3454d1"/></linearGradient></defs><circle cx="24" cy="24" r="20" fill="url(#edge)"/><path d="M40 27c-2 7-9 11-16 10-8-1-12-7-10-13 2-5 8-8 14-6-4-6-14-6-19 0 1-8 8-14 17-14 11 0 19 9 19 19 0 1 0 3-.3 4H25c-5 0-7-2-6-5 1-3 7-4 12-2 4 2 6 4 9 7z" fill="#e6fffc" opacity=".96"/></svg></span><span>Microsoft Edge</span></button>
+      <button class="desktop-icon" data-app="explorer"><span class="desk-emoji folder-icon">📁</span><span>Документы</span></button>
+      <button class="desktop-icon" data-app="recycle"><span class="desk-emoji">🗑️</span><span>Корзина</span></button>
+    </div>
+    <div id="windows"></div>
+    <section class="panel start-panel" id="startPanel" aria-label="Меню Пуск" hidden>
+      <div class="start-search"><span>⌕</span><input id="startSearch" placeholder="Поиск приложений, настроек и документов" autocomplete="off" /></div>
+      <div class="start-content">
+        <div class="section-head"><strong>Закреплено</strong><button class="all-apps" id="allApps">Все приложения <span>›</span></button></div>
+        <div class="pinned-grid" id="pinnedGrid">
+          <button class="pinned-app" data-app="browser"><span class="app-symbol edge-small">e</span><span>Edge</span></button>
+          <button class="pinned-app" data-app="explorer"><span class="app-symbol folder-small">📁</span><span>Проводник</span></button>
+          <button class="pinned-app" data-app="notes"><span class="app-symbol notes-small">▤</span><span>Блокнот</span></button>
+          <button class="pinned-app" data-app="photos"><span class="app-symbol photo-small">▧</span><span>Фотографии</span></button>
+          <button class="pinned-app" data-app="settings"><span class="app-symbol settings-small">⚙</span><span>Параметры</span></button>
+          <button class="pinned-app" data-app="store"><span class="app-symbol store-small">▣</span><span>Microsoft Store</span></button>
+          <button class="pinned-app" data-app="calendar"><span class="app-symbol cal-small">▦</span><span>Календарь</span></button>
+          <button class="pinned-app" data-app="calculator"><span class="app-symbol calc-small">＋</span><span>Калькулятор</span></button>
+        </div>
+        <div class="section-head recommended-head"><strong>Рекомендуем</strong><button class="all-apps" id="moreRecent">Дополнительно <span>›</span></button></div>
+        <div class="recommended-list">
+          <button class="recommended-item" data-app="notes"><span class="recommend-icon notes-small">▤</span><span><b>Заметки.txt</b><small>Недавно открыто</small></span></button>
+          <button class="recommended-item" data-app="explorer"><span class="recommend-icon folder-small">📁</span><span><b>Проекты</b><small>Изменено сегодня</small></span></button>
+        </div>
+      </div>
+      <div class="start-footer"><div class="user-profile"><span class="avatar">А</span><b>Алексей</b></div><button class="power-button" id="powerButton" title="Питание">⏻</button></div>
+    </section>
+    <section class="panel search-panel" id="searchPanel" hidden>
+      <div class="start-search"><span>⌕</span><input id="taskSearch" placeholder="Введите запрос для поиска" autocomplete="off" /></div>
+      <div class="search-empty"><div class="search-orb">✦</div><p>Начните вводить запрос, чтобы найти приложения, файлы и настройки</p></div>
+    </section>
+    <section class="panel calendar-panel" id="calendarPanel" hidden>
+      <div class="calendar-time" id="calendarTime">--:--</div><div class="calendar-date" id="calendarDate"></div>
+      <div class="calendar-month"><button id="prevMonth">‹</button><b id="monthLabel"></b><button id="nextMonth">›</button></div><div class="calendar-grid" id="calendarGrid"></div>
+      <div class="calendar-agenda"><span class="agenda-dot"></span><span>Сегодня событий нет</span></div>
+    </section>
+    <section class="panel quick-panel" id="quickPanel" hidden>
+      <div class="quick-grid">
+        <button class="quick-tile active"><span>◉</span><b>Wi-Fi</b><small>Home Network</small></button><button class="quick-tile active"><span>◖</span><b>Bluetooth</b></button>
+        <button class="quick-tile"><span>◐</span><b>Режим «в самолёте»</b></button><button class="quick-tile"><span>☾</span><b>Не беспокоить</b></button>
+      </div>
+      <div class="brightness"><span>☼</span><input type="range" min="20" max="100" value="85" /></div><div class="volume"><span>◖</span><input id="volumeRange" type="range" min="0" max="100" value="68" /><span id="volumeValue">68%</span></div>
+      <div class="quick-footer"><span>🔋 100%</span><span>⚙</span></div>
+    </section>
+    <footer class="taskbar">
+      <button class="weather-widget" id="weatherButton"><span class="sun-cloud">🌤️</span><span><b>18°</b><small>Переменная облачность</small></span></button>
+      <div class="taskbar-center">
+        <button class="taskbar-icon windows-logo" id="startButton" title="Пуск"><svg viewBox="0 0 24 24"><path d="M2 4.5 10.5 3v8H2zm9.5-1.7L22 1v10h-10.5zM2 12.5h8.5v8L2 19zm9.5 0H22v10l-10.5-1.8z" fill="currentColor"/></svg></button>
+        <button class="taskbar-icon search-icon" id="searchButton" title="Поиск"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.6"/><path d="m16 16 5 5"/></svg></button>
+        <button class="taskbar-icon" data-app="browser" title="Microsoft Edge"><span class="task-edge">e</span></button>
+        <button class="taskbar-icon" data-app="explorer" title="Проводник"><span class="task-folder">📁</span></button>
+        <button class="taskbar-icon" data-app="store" title="Microsoft Store"><span class="task-store">▣</span></button>
+        <button class="taskbar-icon" data-app="notes" title="Блокнот"><span class="task-notes">▤</span></button>
+        <div class="task-divider"></div>
+        <div id="runningIcons"></div>
+      </div>
+      <div class="system-tray">
+        <button class="tray-controls" id="quickButton" title="Быстрые настройки"><span>⌃</span><span class="tray-wifi">◔</span><span class="tray-volume">◖</span><span class="tray-battery">▰</span></button>
+        <button class="clock-button" id="clockButton"><span id="clockTime">--:--</span><small id="clockDate">--.--.----</small></button>
+        <button class="show-desktop" id="showDesktop" title="Свернуть все окна"></button>
+      </div>
+    </footer>
+    <div class="toast" id="toast" hidden></div>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
