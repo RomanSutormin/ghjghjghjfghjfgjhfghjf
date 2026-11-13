@@ -1,0 +1,15 @@
+{
+  "name": "local-desktop-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Локальный рабочий стол с доступом к файлам через разрешения браузера",
+  "scripts": {
+    "test": "node --test",
+    "check": "prettier --check app.js index.html style.css README.md QUALITY.md package.json test/app.test.js && node --check app.js && node --check test/app.test.js"
+  },
+  "devDependencies": {
+    "axe-core": "^4.14.0",
+    "jsdom": "^31.0.1",
+    "prettier": "^3.10.1"
+  }
+}
